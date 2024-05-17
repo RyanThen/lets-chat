@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Let's Chat App</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
 </head>
 <body>
 
-  <h1>Initial Commit</h1>
-  
+  <form class="user-msg-form">
+    <input class="user-msg-field" type="text" placeholder="Your message">
+    <button class="user-msg-submit" type="submit">Send</button>
+  </form>
+
+  <div class="convo-thread-container">
+    <ul class="msg-list">
+      <!-- messages from js -->
+    </ul>
+  </div>
+
 </body>
 </html>
