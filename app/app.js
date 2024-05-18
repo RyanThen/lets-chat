@@ -1,4 +1,4 @@
-const socket = new WebSocket('ws://localhost:3000')
+const socket = io('ws://localhost:3500')
 
 const userMsgForm = document.querySelector('.user-msg-form')
 const userMsgField = document.querySelector('.user-msg-field')
@@ -9,7 +9,8 @@ function sendMessage(e) {
   e.preventDefault()
 
   if(userMsgField.value) {
-    socket.send(userMsgField.value)
+    // send msg/data
+    socket.emit('message', userMsgField.value)
     userMsgField.value = ''
   }
 
@@ -18,12 +19,12 @@ function sendMessage(e) {
 
 userMsgForm.addEventListener('submit', sendMessage);
 
-// listen for messages
-socket.addEventListener('message', response => {
+// recieve/listen for messages
+socket.on('message', response => {
   console.log(response)
 
   const li = document.createElement('li')
-  li.textContent = response.data
+  li.textContent = `${response}`
   
   msgList.appendChild(li)
 })
